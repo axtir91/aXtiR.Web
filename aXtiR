@@ -1,0 +1,46 @@
+import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    <main className="min-h-screen bg-blue-50 p-6 text-center">
+      <header className="mb-10">
+        <h1 className="text-4xl font-bold text-blue-700">aXtiR</h1>
+        <p className="mt-2 text-lg text-gray-700">
+          Free Medical PDFs, MCQs, and Clinical Cases — Premium Access for Full Features
+        </p>
+      </header>
+
+      {!isLoggedIn ? (
+        <div className="space-y-4">
+          <Button onClick={() => setIsLoggedIn(true)} className="bg-blue-600 text-white">Login</Button>
+          <p className="text-sm text-gray-600">New user? <span className="underline cursor-pointer">Register</span></p>
+        </div>
+      ) : (
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-semibold">PDF Library</h2>
+              <p className="text-sm text-gray-600">Browse and download essential study PDFs.</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-semibold">MCQ Bank</h2>
+              <p className="text-sm text-gray-600">Test your knowledge with curated MCQs.</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-semibold">Clinical Cases</h2>
+              <p className="text-sm text-gray-600">Learn through real-life clinical scenarios.</p>
+            </CardContent>
+          </Card>
+        </section>
+      )}
+    </main>
+  );
+}
